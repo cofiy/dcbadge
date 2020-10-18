@@ -4,6 +4,10 @@
 
 Deno code coverage badge powered by [Shields.io](https://shields.io/)
 
+## Caution!
+
+Some unknown bugs are exists, that cannot show the coverage statistics provided by Deno. It seems that coverage will only be shown when tests are in the folder with the same level of the source code (You may refer to my file structure of [this](https://github.com/jswildcards/filedb) repo). We will try to fix it as soon as possible. Stay tuned.
+
 ## Usage
 
 Enter the command below with your terminal, filling your username and repo as parameters
