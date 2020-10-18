@@ -4,11 +4,34 @@ import { calculate } from "./coverage.ts";
 
 const router = new Router();
 
+router.get("/", function(context) {
+  context.response.body = /*html*/`
+    <html>
+    <head>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+    </head>
+    <body style="width:100vw;height:100vh;display:flex;justify-content:center;align-items:center;font-size:16px;">
+      <div style="display:flex;flex-direction:column;margin-bottom:20vh;width:500px;">
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" class="form-control" id="username" />
+        </div>
+        <div class="mb-3">
+          <label for="repo" class="form-label">Repo</label>
+          <input type="text" class="form-control" id="repo" />
+        </div>
+        <button type='button' class="btn btn-primary" onclick="location.href='/' + document.querySelector('#username').value + '/' + document.querySelector('#repo').value">Evaluate</button>
+      </div>
+    </body>
+    </html>
+  `;
+});
+
 router.get("/:username/:repo", async function (context) {
   const { username, repo } = context.params;
   const url = await calculate(username!, repo!);
 
-  context.response.body = `
+  context.response.body = /*html*/`
     <html>
     <body style="width:100vw;height:100vh;display:flex;justify-content:center;align-items:center;">
       <div style="margin-bottom:20vh;max-width:600px;">
