@@ -1,0 +1,7 @@
+.git
+.vscode
+.eggignore
+.gitignore
+egg.yml
+LICENSE
+Procfile

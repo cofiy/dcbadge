@@ -1,11 +1,11 @@
 import { Application, Router } from "https://deno.land/x/oak/mod.ts";
-import { parse } from 'https://deno.land/std@0.74.0/flags/mod.ts';
+import { parse } from "https://deno.land/std@0.74.0/flags/mod.ts";
 import { calculate } from "./coverage.ts";
 
 const router = new Router();
 
-router.get("/", function(context) {
-  context.response.body = /*html*/`
+router.get("/", function (context) {
+  context.response.body = /*html*/ `
     <html>
     <head>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
@@ -34,7 +34,7 @@ router.get("/:username/:repo", async function (context) {
   const { username, repo } = context.params;
   const url = await calculate(username!, repo!);
 
-  context.response.body = /*html*/`
+  context.response.body = /*html*/ `
     <html>
     <head>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">

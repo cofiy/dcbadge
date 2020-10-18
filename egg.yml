@@ -1,0 +1,14 @@
+name: dcbadge
+description: Deno code coverage badges powered by Shields.io
+unstable: true
+version: 0.0.1
+files:
+  - ./build.sh
+  - ./coverage.ts
+  - ./mod.ts
+  - ./README.md
+  - ./server.ts
+entry: ./mod.ts
+checkAll: true
+repository: 'https://github.com/jswildcards/dcbadge'
+unlisted: false
