@@ -9,6 +9,8 @@ Deno code coverage badge powered by [Shields.io](https://shields.io/)
 > ## TL;DR: Do not use this if your tests are not in the same level of the same directory of your source code
 Some unknown bugs are exists, that cannot show the coverage statistics provided by Deno. It seems that coverage will only be shown when tests are in the folder with the same level of the source code (You may refer to my file structure of [this](https://github.com/jswildcards/filedb) repo). We will try to fix it as soon as possible. Stay tuned.
 
+Updates(2020-10-19): it is known as an issue of deno package, please refer to [denoland/deno#7563](https://github.com/denoland/deno/issues/7563)
+
 ## Usage
 
 Enter the command below with your terminal, filling your username and repo as parameters
