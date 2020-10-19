@@ -20,7 +20,7 @@ export async function calculate(username: string, repo: string) {
     stdout: "piped",
   });
 
-  const cmdstr = await pre_build3.output();
+  const output = await pre_build3.output();
   pre_build3.close();
 
   const test_result = new TextDecoder().decode(output);
