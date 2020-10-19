@@ -1,3 +1,5 @@
+import { ensureFileSync } from "./deps.ts";
+
 export async function calculate(username: string, repo: string) {
   const prebuild1 = Deno.run({
     cmd: ["curl", "https://raw.githubusercontent.com/jswildcards/dcbadge/develop/build.sh"],
@@ -8,6 +10,7 @@ export async function calculate(username: string, repo: string) {
   prebuild1.close();
 
   const buildsh = new TextDecoder().decode(output);
+  ensureFileSync("dcbadge-tests/build.sh");
   Deno.writeTextFileSync("dcbadge-tests/build.sh", buildsh);
 
   const prebuild2 = Deno.run({
