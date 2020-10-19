@@ -1,5 +1,5 @@
 import { calculate } from "./coverage.ts";
-import { assert } from "https://deno.land/std@0.74.0/testing/asserts.ts";
+import { assert } from "./deps.ts";
 
 Deno.test("77.08%", function () {
   const url = calculate("jswildcards", "filedb");
