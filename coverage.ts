@@ -5,6 +5,8 @@ export async function calculate(username: string, repo: string) {
 
   await cmd.status();
 
+  cmd.close();
+
   const test_result = Deno.readTextFileSync("test_result.txt");
   const coverage_lines = test_result.split("\n").filter((line) =>
     line.includes("cover file:/")
@@ -31,6 +33,8 @@ export async function calculate(username: string, repo: string) {
   });
 
   await post_build.status();
+
+  post_build.close();
 
   return url;
 }
