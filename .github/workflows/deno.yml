@@ -11,8 +11,14 @@ name: deno
 on:
   push:
     branches: ['*']
+    paths:
+      - '**/*.ts'
+      - '**/*.sh'
   pull_request:
     branches: [main]
+    paths:
+      - '**/*.ts'
+      - '**/*.sh'
 
 jobs:
   test:
