@@ -1,6 +1,12 @@
 # dcbadge
 
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/jswildcards/dcbadge/deno/main)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/jswildcards/dcbadge)
+![GitHub Release Date](https://img.shields.io/github/release-date/jswildcards/dcbadge)
+![GitHub top language](https://img.shields.io/github/languages/top/jswildcards/dcbadge)
+![LGTM Grade](https://img.shields.io/lgtm/grade/javascript/github/jswildcards/dcbadge)
 ![GitHub](https://img.shields.io/github/license/jswildcards/dcbadge)
+[![nest badge](https://nest.land/badge.svg)](https://nest.land/package/dcbadge)
 
 Deno code coverage badge powered by [Shields.io](https://shields.io/)
 
