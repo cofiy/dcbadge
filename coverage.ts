@@ -1,6 +1,6 @@
 export async function calculate(username: string, repo: string) {
   const prebuild1 = Deno.run({
-    cmd: ["curl", "https://deno.land/x/dcbadge@0.0.6/build.sh"],
+    cmd: ["curl", "https://deno.land/x/dcbadge@0.0.2/build.sh"],
     stdout: "piped"
   });
 
