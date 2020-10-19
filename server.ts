@@ -1,5 +1,4 @@
-import { Application, Router } from "https://deno.land/x/oak/mod.ts";
-import { parse } from "https://deno.land/std@0.74.0/flags/mod.ts";
+import { Application, parse, Router } from "./deps.ts";
 import { calculate } from "./coverage.ts";
 
 const router = new Router();
