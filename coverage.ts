@@ -1,11 +1,10 @@
 export async function calculate(username: string, repo: string) {
-  const cmd = Deno.run({
+  const pre_build = Deno.run({
     cmd: ["sh", "build.sh", `https://github.com/${username}/${repo}`],
   });
 
-  await cmd.status();
-
-  cmd.close();
+  await pre_build.status();
+  pre_build.close();
 
   const test_result = Deno.readTextFileSync("test_result.txt");
   const coverage_lines = test_result.split("\n").filter((line) =>
@@ -33,7 +32,6 @@ export async function calculate(username: string, repo: string) {
   });
 
   await post_build.status();
-
   post_build.close();
 
   return url;

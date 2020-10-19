@@ -1,4 +1,4 @@
-import { Application, Router, parse } from "./deps.ts";
+import { Application, parse, Router } from "./deps.ts";
 import { calculate } from "./coverage.ts";
 
 const router = new Router();
