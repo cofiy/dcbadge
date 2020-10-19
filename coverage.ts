@@ -39,7 +39,7 @@ export async function calculate(username: string, repo: string) {
     `https://img.shields.io/badge/code%20coverage-${coverage}%25-${color}.svg`;
 
   const postbuild = Deno.run({
-    cmd: ["rm", "-rf", "repo", "test_result.txt", "build.sh"],
+    cmd: ["rm", "-rf", "repo", "test_result.txt"],
   });
 
   await postbuild.status();
