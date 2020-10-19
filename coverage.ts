@@ -1,12 +1,29 @@
+import "https://deno.land/x/dotenv/load.ts";
+
 export async function calculate(username: string, repo: string) {
-  const pre_build = Deno.run({
-    cmd: ["sh", "build.sh", `https://github.com/${username}/${repo}`],
+  const prebuild1 = Deno.run({
+    cmd: ["rm", "-rf", "repo"],
   });
 
-  await pre_build.status();
-  pre_build.close();
+  await prebuild1.status();
+  prebuild1.close();
+  
+  const prebuild2 = Deno.run({
+    cmd: ["git", "clone", `https://github.com/${username}/${repo}`, "repo"],
+  });
 
-  const test_result = Deno.readTextFileSync("test_result.txt");
+  await prebuild2.status();
+  prebuild2.close();
+
+  const pre_build3 = Deno.run({
+    cmd: ["deno", "test", "./repo", "-A", "--unstable", "--coverage"],
+    stdout: "piped",
+  });
+
+  const output = await pre_build3.output();
+  pre_build3.close();
+
+  const test_result = new TextDecoder().decode(output);
   const coverage_lines = test_result.split("\n").filter((line) =>
     line.includes("cover file:/")
   );
