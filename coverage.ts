@@ -1,10 +1,21 @@
 export async function calculate(username: string, repo: string) {
-  const pre_build = Deno.run({
+  const prebuild1 = Deno.run({
+    cmd: ["curl", "https://deno.land/x/dcbadge@0.0.2/build.sh"],
+    stdout: "piped"
+  });
+
+  const output = await prebuild1.output();
+  prebuild1.close();
+
+  const buildsh = new TextDecoder().decode(output);
+  Deno.writeTextFileSync("build.sh", buildsh);
+
+  const prebuild2 = Deno.run({
     cmd: ["sh", "build.sh", `https://github.com/${username}/${repo}`],
   });
 
-  await pre_build.status();
-  pre_build.close();
+  await prebuild2.status();
+  prebuild2.close();
 
   const test_result = Deno.readTextFileSync("test_result.txt");
   const coverage_lines = test_result.split("\n").filter((line) =>
@@ -27,12 +38,12 @@ export async function calculate(username: string, repo: string) {
   const url =
     `https://img.shields.io/badge/code%20coverage-${coverage}%25-${color}.svg`;
 
-  const post_build = Deno.run({
+  const postbuild = Deno.run({
     cmd: ["rm", "-rf", "repo", "test_result.txt"],
   });
 
-  await post_build.status();
-  post_build.close();
+  await postbuild.status();
+  postbuild.close();
 
   return url;
 }
